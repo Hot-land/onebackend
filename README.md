@@ -1,9 +1,9 @@
 # XRayR
 A Xray backend framework that can easily support many panels.
 
-一个基于Xray的后端框架，支持V2ay,Trojan,Shadowsocks协议，极易扩展，支持多面板对接
+一个基于Xray的后端框架，基于被迫跑路以及后续接力的大佬们的原Repo（看Fork来源），自己跑着玩。
 
-Find the source code here: [Misaka-blog/XrayR](https://github.com/Misaka-blog/XrayR)
+Find the source code here: [chloette/XrayR](https://github.com/chloette/XrayR)
 
 如对脚本不放心，可使用此沙箱先测一遍再使用：https://killercoda.com/playgrounds/scenario/ubuntu
 
@@ -14,16 +14,16 @@ Find the source code here: [Misaka-blog/XrayR](https://github.com/Misaka-blog/Xr
 # 一键安装
 
 ```
-wget -N https://raw.githubusercontents.com/Misaka-blog/XrayR-script/master/install.sh && bash install.sh
+wget -N https://raw.githubusercontents.com/chloette/XrayR-script/master/install.sh && bash install.sh
 ```
 
-# Docker 安装
+# Docker 安装「仅保留，不支持」
 
 ```
-docker pull misakano7545/xrayr:latest && docker run --restart=always --name xrayr -d -v ${PATH_TO_CONFIG}/config.yml:/etc/XrayR/config.yml --network=host misakano7545/xrayr:latest
+docker pull not-support/xrayr:latest && docker run --restart=always --name xrayr -d -v ${PATH_TO_CONFIG}/config.yml:/etc/XrayR/config.yml --network=host not-support/xrayr:latest
 ```
 
-# Docker compose 安装
+# Docker compose 安装「仅保留，不支持」
 
 1. 安装docker-compose: 
 ```
@@ -32,7 +32,7 @@ curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compo
 chmod +x /usr/local/bin/docker-compose
 ```
 
-2. `git clone https://github.com/Misaka-blog/XrayR-script XrayR-release`
+2. `git clone https://github.com/chloette/XrayR-script XrayR-release`
 3. `cd XrayR-release`
 4. 编辑config。
 配置文件基本格式如下，Nodes下可以同时添加多个面板，多个节点配置信息，只需添加相同格式的Nodes item即可。
