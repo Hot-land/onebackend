@@ -14,7 +14,7 @@ Find the source code here: [chloette/XrayR](https://github.com/chloette/XrayR)
 # 一键安装
 
 ```
-wget -N https://raw.githubusercontents.com/chloette/XrayR-script/master/install.sh && bash install.sh
+wget -N https://raw.githubusercontents.com/chloette/XrayR-install/master/install.sh && bash install.sh
 ```
 
 # Docker 安装「仅保留，不支持」
