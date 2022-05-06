@@ -35,11 +35,11 @@ if [[ $arch == "x86_64" || $arch == "x64" || $arch == "amd64" ]]; then
     arch="64"
 elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
     arch="arm64-v8a"
-    echo "本软件不支持 aarch64 or arm64，如果检测有误，请联系作者"
+    echo "不支持 aarch64 or arm64，如果检测有误，请联系作者"
     exit 2
 elif [[ $arch == "s390x" ]]; then
     arch="s390x"
-    echo "本软件不支持 s390x，如果检测有误，请联系作者"
+    echo "不支持 s390x，如果检测有误，请联系作者"
     exit 2
 else
     arch="64"
@@ -118,15 +118,17 @@ install_XrayR() {
             echo -e "${red}检测 XrayR 版本失败，可能是超出 Github API 限制，请稍后再试，或手动指定 XrayR 版本安装${plain}"
             exit 1
         fi
-        echo -e "检测到 XrayR 最新版本：${last_version}，开始安装"
-        wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip
+        echo -e "检测到 XrayR 最新版本：${last_version}，开始安装（其实并不是，LOL）"
+        # wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip
+        wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://qiuyin.s3.ap-northeast-1.amazonaws.com/xrayr/XrayR-linux-64.zip
         if [[ $? -ne 0 ]]; then
             echo -e "${red}下载 XrayR 失败，请确保你的服务器能够下载 Github 的文件${plain}"
             exit 1
         fi
     else
         last_version=$1
-        url="https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip"
+        # url="https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip"
+        url="https://qiuyin.s3.ap-northeast-1.amazonaws.com/xrayr/XrayR-linux-64.zip"
         echo -e "开始安装 XrayR v$1"
         wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip ${url}
         if [[ $? -ne 0 ]]; then
