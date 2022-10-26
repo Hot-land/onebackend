@@ -113,13 +113,13 @@ install_XrayR() {
     cd /usr/local/XrayR/
 
     if  [ $# == 0 ] ;then
-        last_version=$(curl -Ls "https://api.github.com/repos/Hot-land/backend-install/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        last_version=$(curl -Ls "https://api.github.com/repos/Hot-land/onebackend/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ ! -n "$last_version" ]]; then
             echo -e "${red}检测 XrayR 版本失败，可能是超出 Github API 限制，请稍后再试，或手动指定 XrayR 版本安装${plain}"
             exit 1
         fi
         echo -e "检测到 XrayR 最新版本：${last_version}，开始安装（其实并不是，LOL）"
-        # wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip
+        # wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/Hot-land/onebackend/releases/download/${last_version}/XrayR-linux-${arch}.zip
         wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://qiuyin.s3.ap-northeast-1.amazonaws.com/xrayr/XrayR-linux-64.zip
         if [[ $? -ne 0 ]]; then
             echo -e "${red}下载 XrayR 失败，请确保你的服务器能够下载 Github 的文件${plain}"
@@ -127,7 +127,7 @@ install_XrayR() {
         fi
     else
         last_version=$1
-        # url="https://github.com/Hot-land/backend-install/releases/download/${last_version}/XrayR-linux-${arch}.zip"
+        # url="https://github.com/Hot-land/onebackend/releases/download/${last_version}/XrayR-linux-${arch}.zip"
         url="https://qiuyin.s3.ap-northeast-1.amazonaws.com/xrayr/XrayR-linux-64.zip"
         echo -e "开始安装 XrayR v$1"
         wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip ${url}
@@ -142,7 +142,7 @@ install_XrayR() {
     chmod +x XrayR
     mkdir /etc/XrayR/ -p
     rm /etc/systemd/system/XrayR.service -f
-    file="https://github.com/Hot-land/backend-install/raw/master/XrayR.service"
+    file="https://github.com/Hot-land/onebackend/raw/master/XrayR.service"
     wget -q -N --no-check-certificate -O /etc/systemd/system/XrayR.service ${file}
     #cp -f XrayR.service /etc/systemd/system/
     systemctl daemon-reload
@@ -183,7 +183,7 @@ install_XrayR() {
     if [[ ! -f /etc/XrayR/rulelist ]]; then
         cp rulelist /etc/XrayR/
     fi
-    curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/Hot-land/backend-install/master/XrayR.sh
+    curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/Hot-land/onebackend/master/XrayR.sh
     chmod +x /usr/bin/XrayR
     ln -s /usr/bin/XrayR /usr/bin/xrayr # 小写兼容
     chmod +x /usr/bin/xrayr
